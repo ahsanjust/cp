@@ -20,10 +20,10 @@
 #        + does a real g++ -std=c++17 hello-world compile test
 #
 #   One-liner (lab PCs):
-#     curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/reset-all/reset.sh | bash
+#     curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/reset-all/reset.sh | bash
 #
 #   Or clone and run:
-#     git clone https://github.com/ahsanjust/cp.git && cd cp && bash reset-all/reset.sh
+#     git clone https://github.com/ahsanjust/cp.git && cd cp && bash workspace-setup/reset-all/reset.sh
 #
 #   Flags:
 #     -y, --yes        skip confirmation prompt (needed for non-interactive use)
@@ -201,16 +201,8 @@ else
 fi
 [[ "$DRY_RUN" -eq 1 ]] && echo "  • Mode         : DRY-RUN (nothing will change)"
 
-# ---------- confirmation (TTY only; auto-skip when piped) ----------
-if [[ "$ASSUME_YES" -eq 0 && "$DRY_RUN" -eq 0 ]]; then
-  if [[ -t 0 ]]; then
-    printf '\nType RESET to wipe IDE settings and continue (anything else aborts): '
-    read -r answer || true
-    [[ "${answer:-}" == "RESET" ]] || die "Aborted by user. Re-run with --yes for non-interactive use."
-  else
-    echo "Non-interactive stdin detected (e.g. curl|bash) — proceeding without prompt. Backup: $([[ "$NO_BACKUP" -eq 0 ]] && echo ON || echo OFF)."
-  fi
-fi
+# ---------- confirmation (auto-proceeds without manual prompt) ----------
+echo "Proceeding with reset... Backup: $([[ "$NO_BACKUP" -eq 0 ]] && echo ON || echo OFF)."
 
 # ---------- 1/6 kill running IDEs ----------
 say "1/6  Closing running IDEs (if any)"
