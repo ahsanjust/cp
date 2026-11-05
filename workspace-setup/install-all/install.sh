@@ -21,37 +21,51 @@ say "Updating package index"
 $SUDO apt-get update -y
 
 say "1/4  g++ (build-essential + gdb + wget/gpg)"
-$SUDO apt-get install -y build-essential gdb wget gpg ca-certificates
+if command -v g++ >/dev/null 2>&1 && command -v gdb >/dev/null 2>&1; then
+  ok "g++ and gdb already installed: $(g++ --version | head -n1)"
+else
+  $SUDO apt-get install -y build-essential gdb wget gpg ca-certificates
+fi
 
 say "2/4  Code::Blocks"
-$SUDO apt-get install -y codeblocks
+if command -v codeblocks >/dev/null 2>&1; then
+  ok "Code::Blocks already installed"
+else
+  $SUDO apt-get install -y codeblocks
+fi
 
 say "3/4  VS Code"
-if ! command -v code >/dev/null 2>&1; then
+if command -v code >/dev/null 2>&1; then
+  ok "VS Code already installed: $(code --version 2>/dev/null | head -n1)"
+else
   if command -v snap >/dev/null 2>&1; then
     $SUDO snap install --classic code || warn "snap failed -> using Microsoft apt repo"
   fi
-fi
-if ! command -v code >/dev/null 2>&1; then
-  $SUDO apt-get install -y apt-transport-https
-  $SUDO mkdir -p /etc/apt/keyrings
-  wget -qO- https://packages.microsoft.com/keys/microsoft.asc \
-    | gpg --dearmor \
-    | $SUDO tee /etc/apt/keyrings/ms-vscode.gpg >/dev/null
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/ms-vscode.gpg] https://packages.microsoft.com/repos/code stable main" \
-    | $SUDO tee /etc/apt/sources.list.d/vscode.list >/dev/null
-  $SUDO apt-get update -y
-  $SUDO apt-get install -y code
+  if ! command -v code >/dev/null 2>&1; then
+    $SUDO apt-get install -y apt-transport-https
+    $SUDO mkdir -p /etc/apt/keyrings
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc \
+      | gpg --dearmor \
+      | $SUDO tee /etc/apt/keyrings/ms-vscode.gpg >/dev/null
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/ms-vscode.gpg] https://packages.microsoft.com/repos/code stable main" \
+      | $SUDO tee /etc/apt/sources.list.d/vscode.list >/dev/null
+    $SUDO apt-get update -y
+    $SUDO apt-get install -y code
+  fi
 fi
 
 say "4/4  Sublime Text (official apt repo)"
-wget -qO- https://download.sublimetext.com/sublimehq-pub.gpg \
-  | gpg --dearmor \
-  | $SUDO tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg >/dev/null
-echo "deb https://download.sublimetext.com/ apt/stable/" \
-  | $SUDO tee /etc/apt/sources.list.d/sublime-text.list >/dev/null
-$SUDO apt-get update -y
-$SUDO apt-get install -y sublime-text
+if command -v subl >/dev/null 2>&1; then
+  ok "Sublime Text already installed: $(subl --version 2>/dev/null)"
+else
+  wget -qO- https://download.sublimetext.com/sublimehq-pub.gpg \
+    | gpg --dearmor \
+    | $SUDO tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg >/dev/null
+  echo "deb https://download.sublimetext.com/ apt/stable/" \
+    | $SUDO tee /etc/apt/sources.list.d/sublime-text.list >/dev/null
+  $SUDO apt-get update -y
+  $SUDO apt-get install -y sublime-text
+fi
 
 say "Verifying"
 g++ --version >/dev/null 2>&1 && ok "g++      : $(g++ --version | head -n1)" || warn "g++ missing"
