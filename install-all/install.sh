@@ -5,7 +5,7 @@
 #   3) VS Code                       4) Sublime Text
 #
 # One-liner:
-#   curl -fsSL https://raw.githubusercontent.com/ahsanjust/CP/main/install-all/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/install-all/install.sh | bash
 
 set -euo pipefail
 

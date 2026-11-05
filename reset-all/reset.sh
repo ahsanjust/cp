@@ -20,10 +20,10 @@
 #        + does a real g++ -std=c++17 hello-world compile test
 #
 #   One-liner (lab PCs):
-#     curl -fsSL https://raw.githubusercontent.com/ahsanjust/CP/main/reset-all/reset.sh | bash
+#     curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/reset-all/reset.sh | bash
 #
 #   Or clone and run:
-#     git clone https://github.com/ahsanjust/CP.git && cd CP && bash reset-all/reset.sh
+#     git clone https://github.com/ahsanjust/cp.git && cd cp && bash reset-all/reset.sh
 #
 #   Flags:
 #     -y, --yes        skip confirmation prompt (needed for non-interactive use)
