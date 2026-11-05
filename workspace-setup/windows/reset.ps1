@@ -5,7 +5,7 @@
 #   4) Ensures latest versions installed via winget
 #
 # Run in PowerShell:
-#   irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/reset-all/reset.ps1 | iex
+#   irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/windows/reset.ps1 | iex
 
 $ErrorActionPreference = "Continue"
 

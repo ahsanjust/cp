@@ -10,12 +10,12 @@ Competitive Programming setup guides & AI Upsolving tools:
 
 ### Linux (Ubuntu / Debian):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/install-all/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/linux/install.sh | bash
 ```
 
 ### Windows (PowerShell):
 ```powershell
-irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/install-all/install.ps1 | iex
+irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/windows/install.ps1 | iex
 ```
 
 ---
@@ -26,12 +26,12 @@ Wipes IDE caches/settings to fresh factory defaults and ensures the latest versi
 
 ### Linux (Ubuntu / Debian):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/reset-all/reset.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/linux/reset.sh | bash
 ```
 
 ### Windows (PowerShell):
 ```powershell
-irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/reset-all/reset.ps1 | iex
+irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/windows/reset.ps1 | iex
 ```
 
 ---

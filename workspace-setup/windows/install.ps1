@@ -5,7 +5,7 @@
 #   4) Sublime Text
 #
 # Run in PowerShell (Run as Administrator recommended):
-#   irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/install-all/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/ahsanjust/cp/main/workspace-setup/windows/install.ps1 | iex
 
 $ErrorActionPreference = "Continue"
 
