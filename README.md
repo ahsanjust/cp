@@ -3,6 +3,7 @@
 Competitive Programming setup guides & AI Upsolving tools:
 
 - 🚀 **AI CP Mentor & Upsolving Prompt:** See [prompt.md](prompt.md) for the streamlined master prompt (ready to copy & paste) designed for deep learning, formal proofs, sample verification, and zero-rating intimidation.
+- 🎯 **Contest Checklist & Mental Triggers:** See [checklist.md](checklist.md) for raw in-contest WA/TLE/MLE debugging checklists and problem-solving triggers.
 
 ---
 
